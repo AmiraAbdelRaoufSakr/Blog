@@ -26,7 +26,7 @@
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info  text-white"    style="margin-bottom: 20px;">View</button>
-        <button type="button" class="btn btn-primary  text-white" style="margin-bottom: 20px;">Edit</button>
+        <a href="{{ route('posts.edit',['post' => $post['id']]) }}" class="btn btn-primary  text-white" style="margin-bottom: 20px;">Edit</a>
         <button type="button" class="btn btn-danger  text-white"  style="margin-bottom: 20px;">Delete</button>
       </div>
     </tr>
