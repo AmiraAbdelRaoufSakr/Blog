@@ -4,8 +4,10 @@
 
 @section('content')
 
-<form method="GET" action="{{route('posts.update',['post' => $post['id']])}}">
+<form method="POST"  action="{{route('posts.update',['post' => $post['id']])}}">
+
 @csrf
+@method("PUT")
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" placeholder={{ $post['title'] }}>
@@ -20,6 +22,6 @@
           <option>Amira</option>
       </select>
   </div>
-  <button type="submit" class="btn btn-success">Create Post</button>
+  <button type="submit" class="btn btn-primary  text-white">Update</button>
   </form>
   @endsection
