@@ -18,8 +18,11 @@
   </div>
   <div class="form-group">
     <label for="posted_by">Post Creator</label>
-    <select class="form-control" name="user_id" id="post_creator" placeholder={{ $post['posted_by'] }}>
-          <option value="{{$user->id}}">{{$user->name}}</option>
+    <select class="form-control" name="user_id" id="post_creator"  placeholder={{ $post['posted_by'] }}>
+    <option  value="{{$user->id}}" selected >{{$user->name}}</option>
+       @foreach ($users as $user)
+           <option  value="{{$user->id}}" >{{$user->name}}</option>
+        @endforeach
       </select>
   </div>
   <button type="submit" class="btn btn-primary  text-white">Update</button>
