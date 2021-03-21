@@ -68,4 +68,12 @@ class PostController extends Controller
         'user' => User::find($post->user_id)
     ]); 
   }
+  //----------------------------------------------------------
+  public function destroy($postId)
+  {
+    $post = Post::find($postId);
+    $post->delete();
+    return redirect()->route('posts.index');
+  }
+//-----------------------------------------------------------
 }

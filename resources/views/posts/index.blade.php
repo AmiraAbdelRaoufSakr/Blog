@@ -27,7 +27,10 @@
       <div class="btn-group" role="group" aria-label="Basic example">
       <a href="{{ route('posts.show',['post' => $post['id']]) }}" class="btn btn-info  text-white"    style="margin-bottom: 20px;">View</a>
         <a href="{{ route('posts.edit',['post' => $post['id']]) }}" class="btn btn-primary  text-white" style="margin-bottom: 20px;">Edit</a>
-        <button type="button" class="btn btn-danger  text-white"  style="margin-bottom: 20px;">Delete</button>
+        <form method="POST"  action="{{route('posts.destroy',['post' => $post['id']])}}">
+        @csrf
+       @method("DELETE")
+       <button type="submit" class="btn btn-danger  text-white"  style="margin-bottom: 20px;" onclick="return confirm('Are you sure?')" ><i class="fa fa-trash"></i>Delete</button>
       </div>
     </tr>
     @endforeach
