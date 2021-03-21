@@ -19,7 +19,7 @@
   <div class="form-group">
     <label for="posted_by">Post Creator</label>
     <select class="form-control" name="user_id" id="post_creator"  placeholder={{ $post['posted_by'] }}>
-    <option  value="{{$user->id}}" selected >{{$user->name}}</option>
+    <option  value="{{ $post -> user ? $post->user->id : 'user not found' }}" selected >{{ $post -> user ? $post->user->name : 'user not found' }}</option>
        @foreach ($users as $user)
            <option  value="{{$user->id}}" >{{$user->name}}</option>
         @endforeach
