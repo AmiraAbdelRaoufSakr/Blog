@@ -19,10 +19,10 @@
   <tbody>
   @foreach ($posts as $post)
     <tr>
-      <th scope="row">{{$post ['id']}}</th>
-      <td>{{$post ['title']}}</td>
-      <td>{{$post ['posted_by']}}</td>
-      <td>{{$post ['created_at']}}</td>
+      <th scope="row">{{$post -> id}}</th>
+      <td>{{$post -> title}}</td>
+      <td>{{ $post -> user ? $post->user->name : 'user not found' }}</td>
+      <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post['created_at'])->format('Y-m-d') }}</td>
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
       <a href="{{ route('posts.show',['post' => $post['id']]) }}" class="btn btn-info  text-white"    style="margin-bottom: 20px;">View</a>

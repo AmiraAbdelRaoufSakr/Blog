@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -73,6 +74,9 @@ class PostController extends Controller
   {
     $post = Post::find($postId);
     $post->delete();
+    
+          
+  
     return redirect()->route('posts.index');
   }
 //-----------------------------------------------------------
