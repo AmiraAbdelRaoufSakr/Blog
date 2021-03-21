@@ -8,16 +8,18 @@
 @csrf
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" id="title">
+    <input type="text" name="title" class="form-control" id="title">
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description"> </textarea>
+    <textarea class="form-control" name='description' id="description"> </textarea>
   </div>
   <div class="form-group">
     <label for="posted_by">Post Creator</label>
-    <select class="form-control" id="post_creator">
-          <option>Amira</option>
+    <select class="form-control" name="user_id" id="post_creator">
+        @foreach ($users as $user)
+           <option  value="{{$user->id}}" >{{$user->name}}</option>
+        @endforeach
       </select>
   </div>
   <button type="submit" class="btn btn-success">Create Post</button>
