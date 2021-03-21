@@ -29,7 +29,6 @@ class PostController extends Controller
   {
      
       $post = new Post;
-      //dd($request);
       $post->title = $request->title;
       $post->description = $request->description;
       $post->user_id = $request->user_id;
@@ -37,17 +36,24 @@ class PostController extends Controller
       return redirect()->route('posts.index');
   }
   //-------------------------------------------------------------------
-  public function edit()
+  public function edit($postId)
   {
-    $post = ['id' => 1, 'title' => 'learn php', 'description' => 'In this post we are going to learn php', 'posted_by' => 'Amira', 'created_at' => '2021-03-20'];
-
+    $post = Post::find($postId);
+   // $userName = User::find($post->user_id);
+    
     return view('posts.edit', [
         'post' => $post,
+        'user' => User::find($post->user_id)
     ]);
 }
 
-  public function update()
+  public function update(Request $request,$postId)
   {
+    $post =  Post::find($postId);
+    $post->title = $request->title;
+    $post->description = $request->description;
+    $post->user_id = $request->user_id;
+    $post->save();
       
       return redirect()->route('posts.index');
   }

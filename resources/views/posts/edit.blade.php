@@ -10,16 +10,16 @@
 @method("PUT")
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" placeholder={{ $post['title'] }}>
+    <input type="text" name="title" class="form-control"value={{ $post['title'] }} id="title" placeholder={{ $post['title'] }}>
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description">{{ $post['description'] }}</textarea>
+    <textarea class="form-control" name="description" id="description">{{ $post['description'] }}</textarea>
   </div>
   <div class="form-group">
     <label for="posted_by">Post Creator</label>
-    <select class="form-control" id="post_creator" placeholder={{ $post['posted_by'] }}>
-          <option>Amira</option>
+    <select class="form-control" name="user_id" id="post_creator" placeholder={{ $post['posted_by'] }}>
+          <option value="{{$user->id}}">{{$user->name}}</option>
       </select>
   </div>
   <button type="submit" class="btn btn-primary  text-white">Update</button>
