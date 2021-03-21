@@ -29,8 +29,10 @@ class PostController extends Controller
   {
      
       $post = new Post;
+      //dd($request);
       $post->title = $request->title;
       $post->description = $request->description;
+      $post->user_id = $request->user_id;
       $post->save();
       return redirect()->route('posts.index');
   }
