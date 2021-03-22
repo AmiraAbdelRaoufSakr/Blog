@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StorePostRequest;
+use Illuminate\Validation\Rule;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
+
 
 use Illuminate\Http\Request;
 
@@ -27,9 +30,9 @@ class PostController extends Controller
     return view('posts.create');
   }
 
-  public function store(Request $request)
+  public function store(StorePostRequest $request)
   {
-     
+    // dd($request);
       $post = new Post;
       $post->title = $request->title;
       $post->description = $request->description;
@@ -52,7 +55,16 @@ class PostController extends Controller
 
   public function update(Request $request,$postId)
   {
+    
     $post =  Post::find($postId);
+    $request->validate([
+      'title' => [
+          'required',
+           Rule::unique('posts')->ignore($postId),
+           'min:3'
+      ],
+      'description' =>  ['required','min:10'],
+  ]);
     $post->title = $request->title;
     $post->description = $request->description;
     $post->user_id = $request->user_id;

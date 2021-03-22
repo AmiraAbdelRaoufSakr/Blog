@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'description' => $this->faker->sentence,
             'user_id' =>$this->faker->numberBetween($min = 1, $max =112)
 
-        ];
+        ];//has users
     }
    
     
