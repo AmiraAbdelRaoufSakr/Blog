@@ -19,7 +19,7 @@
   <tbody>
   @foreach ($posts as $post)
     <tr>
-      <th scope="row">{{$post -> id}}</th>
+      <th scope="row">{{$post -> slug}}</th>
       <td>{{$post -> title}}</td>
       <td>{{ $post -> user ? $post->user->name : 'user not found' }}</td>
       <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post['created_at'])->format('Y-m-d') }}</td>
