@@ -53,6 +53,13 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
+                            <a href="/auth/redirect" class="btn btn-dark">
+                                    {{ __('Login With Github') }}
+                                </a>
+                                <a href="/auth/google/redirect" class="btn btn-info">
+                                    {{ __('Login With Google') }}
+                                </a>
+
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
