@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleUserController;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -33,7 +34,8 @@ Route::delete('/posts/{post}',[PostController::class, 'destroy'])->name('posts.d
 Auth::routes();
 Route::get('/auth/redirect',[UserController::class, 'redirectToProvider']);
 Route::get('/auth/callback',[UserController::class, 'handleProviderCallback']);
-
+Route::get('/auth/google/redirect',[GoogleUserController::class, 'redirectToProvider']);
+Route::get('/auth/google/callback',[GoogleUserController::class, 'handleProviderCallback']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*Route::get('/auth/redirect', function () {
@@ -44,7 +46,7 @@ Route::get('/auth/callback', function () {
     $user = Socialite::driver('github')->user();
     dd($user);
     // $user->token
-});*/
+});
 Route::get('/auth/google/redirect', function () {
     return Socialite::driver('google')->redirect();
 
@@ -54,4 +56,4 @@ Route::get('/auth/google/callback', function () {
     $user = Socialite::driver('google')->user();
     dd($user);
     // $user->token
-});
+});*/
